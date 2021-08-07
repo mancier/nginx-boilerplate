@@ -1,0 +1,18 @@
+version: '3'
+services: 
+    nginx:
+        nginx: nginx
+        image: nginx:stable-alpine
+        working_dir: /etc/nginx
+        restart: always
+        environment: 
+            SERVER_URL: https://example.com
+            API_SERVICE: api-service-name
+            API_SERVICE_PORT: 8080
+            FRONT_SERVICE: front-service-name
+            FRONT_SERVICE_NAME: 80       
+        ports: 
+            - 80:80
+            - 443:443
+        volumes: 
+            - .:./conf.d/
